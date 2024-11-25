@@ -1,0 +1,10 @@
+name: UnplaceableHeads
+main: net.evmodder.UnplaceableHeads.UnplaceableHeads
+author: EvModder
+description: Make mob and player heads unplaceable with a permission
+website: https://dev.bukkit.org/projects/dropheads/pages/extras
+#1=initial release
+#0=initial release
+version: 1.0
+api-version: 1.13
+depend: [DropHeads]

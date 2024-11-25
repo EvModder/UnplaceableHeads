@@ -1,0 +1,3 @@
+# To bypass this plugin, give players the 'dropheads.canplacehead' permission
+
+prevent-head-placement-message: '&7[&6DropHeads&7]&c No permission to place head blocks'
