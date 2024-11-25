@@ -8,3 +8,8 @@ website: https://dev.bukkit.org/projects/dropheads/pages/extras
 version: 1.0
 api-version: 1.13
 depend: [DropHeads]
+
+permissions:
+  dropheads.canplacehead:
+    description: Permission to place down heads as blocks
+    default: op
