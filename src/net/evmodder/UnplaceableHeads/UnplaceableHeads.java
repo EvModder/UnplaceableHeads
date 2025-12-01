@@ -9,9 +9,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.Plugin;
 import com.mojang.authlib.GameProfile;
-import net.evmodder.EvLib.extras.HeadUtils;
-import net.evmodder.EvLib.extras.TextUtils;
-import net.evmodder.EvLib.EvPlugin;
+import net.evmodder.EvLib.bukkit.HeadUtils;
+import net.evmodder.EvLib.TextUtils;
+import net.evmodder.EvLib.bukkit.EvPlugin;
 import net.evmodder.EvLib.FileIO;
 
 public final class UnplaceableHeads extends EvPlugin implements Listener{
