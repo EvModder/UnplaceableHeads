@@ -8,8 +8,8 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.Plugin;
-import com.mojang.authlib.GameProfile;
 import net.evmodder.EvLib.bukkit.HeadUtils;
+import net.evmodder.EvLib.bukkit.YetAnotherProfile;
 import net.evmodder.EvLib.TextUtils;
 import net.evmodder.EvLib.bukkit.EvPlugin;
 import net.evmodder.EvLib.FileIO;
@@ -40,8 +40,7 @@ public final class UnplaceableHeads extends EvPlugin implements Listener{
 				? evt.getPlayer().getInventory().getItemInMainHand()
 				: evt.getPlayer().getInventory().getItemInOffHand();
 		if(!headItem.hasItemMeta()) return;
-		final SkullMeta meta = (SkullMeta) headItem.getItemMeta();
-		final GameProfile profile = HeadUtils.getGameProfile(meta);
+		final YetAnotherProfile profile = YetAnotherProfile.fromSkullMeta((SkullMeta)headItem.getItemMeta());
 		if(profile == null) return;
 
 		if(evt.getPlayer().hasPermission("dropheads.canplacehead")) return;
