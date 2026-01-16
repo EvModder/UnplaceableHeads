@@ -7,23 +7,26 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.plugin.Plugin;
 import net.evmodder.EvLib.bukkit.HeadUtils;
 import net.evmodder.EvLib.bukkit.YetAnotherProfile;
+import net.evmodder.DropHeads.DropHeads;
 import net.evmodder.EvLib.TextUtils;
+import net.evmodder.EvLib.bukkit.ConfigUtils;
 import net.evmodder.EvLib.bukkit.EvPlugin;
-import net.evmodder.EvLib.FileIO;
 
 public final class UnplaceableHeads extends EvPlugin implements Listener{
 	private String PREVENT_PLACE_MSG;
 
-	@Override public void reloadConfig(){ // Same as EvPlugin, except we use "DropHeads.getPlugin()" instead of "this" when possible
+	private DropHeads dropheadsPlugin;
+	private DropHeads getDropHeadsPlugin(){
+		if(dropheadsPlugin == null) dropheadsPlugin = (DropHeads)getServer().getPluginManager().getPlugin("DropHeads");
+		return dropheadsPlugin;
+	}
+	@Override public void reloadConfig(){
+		// Same as EvPlugin, except we use "DropHeads.getPlugin()" for config dir
+		ConfigUtils.updateConfigDirName(getDropHeadsPlugin());
 		InputStream defaultConfig = getClass().getResourceAsStream("/config.yml");
-		if(defaultConfig != null){
-			Plugin dhPl = getServer().getPluginManager().getPlugin("DropHeads");;
-			FileIO.verifyDir(dhPl != null ? dhPl : this);
-			config = FileIO.loadConfig(this, "config-"+getName()+".yml", defaultConfig, /*notifyIfNew=*/true);
-		}
+		config = ConfigUtils.loadConfig(this, "config-"+getName()+".yml", defaultConfig, /*notifyIfNew=*/true);
 	}
 
 	@Override public void onEvEnable(){
